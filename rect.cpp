@@ -28,6 +28,7 @@ Rect::Rect(const Window& window, int w, int h, int x, int y, const string &image
 }
 
 Rect::~Rect() {
+	// TODO: ~Rect() está a destruir tambem a window
 	SDL_DestroyTexture(_imageTexture);
 	cout << "Rect object destructed!" << endl;
 }

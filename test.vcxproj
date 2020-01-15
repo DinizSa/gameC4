@@ -152,10 +152,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="rects.cpp" />
     <ClCompile Include="rect.cpp" />
+    <ClCompile Include="matrix.cpp" />
     <ClCompile Include="window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="matrix.h" />
+    <ClInclude Include="rects.h" />
     <ClInclude Include="rect.h" />
     <ClInclude Include="window.h" />
   </ItemGroup>
