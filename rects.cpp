@@ -25,3 +25,24 @@ void Rects::initRects(Window& window, Matrix& matrix) {
 		}
 	}
 }
+
+// Poll events
+void Rects::processEvent(SDL_Event& event) {
+	for (unsigned int i = 0; i < _arrVecs.size(); i++) {
+		_arrVecs[i].pollEventsRect(event);
+	}
+}
+
+// State update
+void Rects::stateUpdate() {
+	for (unsigned int i = 0; i < _arrVecs.size(); i++) {
+		_arrVecs[i].fall();
+	}
+}
+
+// Render view
+void Rects::renderRecs() {
+	for (unsigned int i = 0;  i < _arrVecs.size(); i++) {
+		_arrVecs[i].renderRect();
+	}
+}

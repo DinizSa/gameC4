@@ -48,7 +48,6 @@ void Rect::renderRect() const {
 void Rect::pollEventsRect(SDL_Event& event) {
 	switch (event.type)
 	{
-
 	case SDL_MOUSEMOTION:
 		lastMouseX = event.motion.x;
 		lastMouseY = event.motion.y;
@@ -68,12 +67,10 @@ void Rect::fall() {
 	}
 }
 
-
+// TODO: call this function only rect clicked
 void Rect::checkClickInRect(int& eventX, int& eventY) {
 	if (!isFalling && (eventX > _x) && (eventX - _x < _w) && (eventY > _y) && (eventY - _y < _h)) {
-
 		isFalling = true;
-		cout << "Clicked inside the Rect!" << endl;
 	}
 }
 

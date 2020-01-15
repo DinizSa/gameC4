@@ -10,11 +10,8 @@ using namespace std;
 
 #undef main
 
-void pollEvents(Rect rects[2], Window& window);
-void initArrayOfRects(Window& window, Matrix &matrix, vector<Rect> &arrVecs);
+void pollEvents(Window& window, Rects& VecRects);
 
-// Map generator
-// Call array of Rec's
 
 int main() {
 	// Constants
@@ -24,7 +21,7 @@ int main() {
 	const int NR_ELEMENTS_PER_COLUMN = 4;
 	SDL_Event* event = nullptr;
 	Matrix matrix(NR_ELEMENTS, NR_ELEMENTS_PER_COLUMN);
-	vector<Rect> arrVecs;
+	//vector<Rect> arrVecs;
 	const string BOX_PATH = "assets/brownBox.png";
 	Rects VecRects(NR_ELEMENTS, NR_ELEMENTS_PER_COLUMN);
 
@@ -33,54 +30,24 @@ int main() {
 	matrix.initMatrix();
 	VecRects.initRects(window, matrix);
 
-	// Old way, to be replaced
-	Rect rects[2] = {
-		{window, 20, 20, 200, 200, BOX_PATH},
-		{window, 20, 20, 300, 200, BOX_PATH}
-	};
 
 	while (!window.isClosed()) {
-		// State update
-		pollEvents(rects, window);
-		for (int i = 0; i < 2; i++) {
-			rects[i].fall();
-		}
-		// Render view (state -> view)
-		for (int i = 0; i < 2; i++) { 
-			rects[i].renderRect();
-		}
+		//// State update
+		pollEvents(window, VecRects);
+		VecRects.stateUpdate();
+		VecRects.renderRecs();
 		window.clear();
 	}
 
 	return 0;
 }
 
-// Listen to user events 
-// Tutorial said it would be better to have this logic on a class, smany rect would get complicated
-void pollEvents(Rect rects[2], Window& window) {
+// Listen to user events (TODO: create a class for this)
+void pollEvents(Window& window, Rects &VecRects) {
 	SDL_Event event;
 
 	if (SDL_PollEvent(&event)) {
-		for (int i = 0; i < 2; i++) {
-			rects[i].pollEventsRect(event);
-		}
+		VecRects.processEvent(event);
 		window.pollEvents(event);
 	}
 }
-
-//// Initialize array: see where is one, and create array
-//void initArrayOfRects(Window &window, Matrix &matrix, vector<Rect> &arrVecs) {
-//	const string BOX_PATH = "assets/brownBox.png";
-//	const int sizeBox = 20;
-//	const int startX = 200;
-//	const int startY = 200;
-//	for (int x = 0; x < 5; x++)
-//	{
-//		for (int y = 0; y < 4; y++)
-//		{
-//			if (matrix.getElement(x, y)>0) {
-//				arrVecs.push_back({ window, sizeBox, sizeBox, startX + sizeBox*x, startY + sizeBox * y, BOX_PATH });
-//			}
-//		}
-//	}
-//}

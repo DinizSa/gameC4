@@ -8,7 +8,11 @@ using namespace std;
 class Rects {
 public:
 	Rects(const int &nrElements, const int &nrElementsPerColumn);
-	void initRects(Window &window, Matrix &matrix);
+	void initRects(Window &window, Matrix &matrix); 
+	void processEvent(SDL_Event& event);
+	void stateUpdate();
+	void renderRecs();
+
 private:
 	const string BOX_PATH = "assets/brownBox.png";
 	const int sizeBox = 20;
