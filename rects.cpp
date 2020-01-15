@@ -20,7 +20,7 @@ void Rects::initRects(Window& window, Matrix& matrix) {
 			if (matrix.getElement(x, y) > 0) {
 				// With emplace_back() we create a Rect (with the respective parameters) inside the _arrVecs. 
 				// With push_back() we would create a local copy of the object and then copy to the _arrVecs.
-				_arrVecs.emplace_back(window, sizeBox, sizeBox, startX + sizeBox * x, startY + sizeBox * y, BOX_PATH);
+				_arrVecs.emplace_back(window, sizeBox, sizeBox, 2*startX - sizeBox * x, 2 * startY - sizeBox * y, BOX_PATH);
 			}
 		}
 	}
