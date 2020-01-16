@@ -16,21 +16,27 @@ void Matrix::initMatrix() {
 		bool hasZero = false;
 		for (int j = 0; j < _nrElementsPerColumn; j++) {
 			int indice = i * _nrElementsPerColumn + j;
-			if (j == 0) { 
-				// first in the collumn
+			if ((j == i) or (j == 0)) {
 				_VecMatrix.push_back(1);
 			}
-			else if (!hasZero) {
-				// Random probability to have or not a box
-				int random = rand() % 2;
-				_VecMatrix.push_back(random);
-				hasZero = (random == 0);
-			}
 			else {
-				// Dont put boxes above an empty space
 				_VecMatrix.push_back(0);
 			}
-			//cout << "ind:" << indice << ", val:" << _VecMatrix[indice] << endl;
+			//if (j == 0) { 
+			//	// first in the collumn
+			//	_VecMatrix.push_back(1);
+			//}
+			//else if (!hasZero) {
+			//	// Random probability to have or not a box
+			//	int random = rand() % 2;
+			//	_VecMatrix.push_back(random);
+			//	hasZero = (random == 0);
+			//}
+			//else {
+			//	// Dont put boxes above an empty space
+			//	_VecMatrix.push_back(0);
+			//}
+			////cout << "ind:" << indice << ", val:" << _VecMatrix[indice] << endl;
 		}
 	}
 }

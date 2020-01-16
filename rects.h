@@ -10,7 +10,7 @@ public:
 	Rects(const int &nrElements, const int &nrElementsPerColumn);
 	void initRects(Window &window, Matrix &matrix); 
 	void processEvent(SDL_Event& event);
-	void stateUpdate();
+	void stateUpdate(Matrix& matrix);
 	void renderRecs();
 
 private:

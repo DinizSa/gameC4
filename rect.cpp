@@ -62,15 +62,20 @@ void Rect::pollEventsRect(SDL_Event& event) {
 }
 
 void Rect::fall() {
-	if (isFalling) {
-		_y -= -1;
+	if (_deltaY > 0) {
+		_y++;
+		_deltaY--;
 	}
+}
+
+void Rect::setDistanceDown(const int &dy) {
+	_deltaY = dy;
 }
 
 // TODO: call this function only rect clicked
 void Rect::checkClickInRect(int& eventX, int& eventY) {
 	if (!isFalling && (eventX > _x) && (eventX - _x < _w) && (eventY > _y) && (eventY - _y < _h)) {
-		isFalling = true;
+		// Implement check color & destroy boxes
 	}
 }
 

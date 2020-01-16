@@ -9,6 +9,8 @@ public:
 	void pollEventsRect(SDL_Event& event);
 	void checkClickInRect(int& eventX, int& eventY);
 	void fall();
+	void setDistanceDown(const int &dy);
+
 private:
 	int _w, _h;
 	int _x, _y;
@@ -17,4 +19,5 @@ private:
 	int const SPEED = 10;
 	int lastMouseX, lastMouseY = 0;
 	bool isFalling = false;
+	int _deltaY = 0;
 }; 

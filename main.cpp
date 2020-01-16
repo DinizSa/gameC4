@@ -34,7 +34,7 @@ int main() {
 	while (!window.isClosed()) {
 		//// State update
 		pollEvents(window, VecRects);
-		VecRects.stateUpdate();
+		VecRects.stateUpdate(matrix);
 		VecRects.renderRecs();
 		window.clear();
 	}
